@@ -1,0 +1,22 @@
+{
+  "name": "live-football-scoreboard",
+  "version": "1.0.0",
+  "description": "Live Football World Cup Scoreboard Library",
+  "main": "index.js",
+  "scripts": {
+    "test": "jest"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Dragidare/live-football-scoreboard.git"
+  },
+  "author": "Darko Antic",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/Dragidare/live-football-scoreboard/issues"
+  },
+  "homepage": "https://github.com/Dragidare/live-football-scoreboard#readme",
+  "devDependencies": {
+    "jest": "^29.6.1"
+  }
+}
