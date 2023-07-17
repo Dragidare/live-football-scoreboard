@@ -3,12 +3,30 @@ export class Match {
     private awayTeam: string;
     private homeScore: number;
     private awayScore: number;
+    private order: number;
   
-    constructor(homeTeam: string, awayTeam: string) {
+    constructor(homeTeam: string, awayTeam: string, order: number) {
       this.homeTeam = homeTeam;
       this.awayTeam = awayTeam;
       this.homeScore = 0;
       this.awayScore = 0;
+      this.order = order;
+    }
+  
+    public getHomeTeam(): string {
+      return this.homeTeam;
+    }
+  
+    public getAwayTeam(): string {
+      return this.awayTeam;
+    }
+  
+    public getHomeScore(): number {
+      return this.homeScore;
+    }
+  
+    public getAwayScore(): number {
+      return this.awayScore;
     }
   
     public updateScore(homeScore: number, awayScore: number): void {
@@ -16,7 +34,12 @@ export class Match {
       this.awayScore = awayScore;
     }
   
-    public getScore(): string {
+    public getOrder(): number {
+      return this.order;
+    }
+  
+    public getSummary(): string {
       return `${this.homeTeam} ${this.homeScore} - ${this.awayScore} ${this.awayTeam}`;
     }
   }
+  

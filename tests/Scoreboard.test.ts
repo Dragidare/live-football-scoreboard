@@ -7,33 +7,37 @@ describe("Scoreboard", () => {
     scoreboard = new Scoreboard();
   });
 
-  test("should start a new match", () => {
-    scoreboard.startMatch("Mexico", "Canada");
-    expect(scoreboard.getSummary()).toContain("Mexico 0 - 0 Canada");
+  test('should start a new match and update the summary correctly', () => {
+    const scoreboard = new Scoreboard();
+    scoreboard.startNewMatch('Mexico', 'Canada');
+    const expectedSummary = [
+      'Mexico 0 - 0 Canada',
+    ];
+    expect(scoreboard.getSummary()).toEqual(expectedSummary);
   });
 
   test("should update match score", () => {
-    scoreboard.startMatch("Mexico", "Canada");
+    scoreboard.startNewMatch("Mexico", "Canada");
     scoreboard.updateScore("Mexico", "Canada", 0, 5);
     expect(scoreboard.getSummary()).toContain("Mexico 0 - 5 Canada");
   });
 
   test("should finish a match", () => {
-    scoreboard.startMatch("Mexico", "Canada");
+    scoreboard.startNewMatch("Mexico", "Canada");
     scoreboard.finishMatch("Mexico", "Canada");
     expect(scoreboard.getSummary()).not.toContain("Mexico 0 - 0 Canada");
   });
 
   test("should return matches summary ordered by total score", () => {
-    scoreboard.startMatch("Mexico", "Canada");
-    scoreboard.startMatch("Spain", "Brazil");
-    scoreboard.startMatch("Germany", "France");
+    scoreboard.startNewMatch("Mexico", "Canada");
+    scoreboard.startNewMatch("Spain", "Brazil");
+    scoreboard.startNewMatch("Germany", "France");
     scoreboard.updateScore("Mexico", "Canada", 0, 5);
     scoreboard.updateScore("Spain", "Brazil", 10, 2);
     scoreboard.updateScore("Germany", "France", 2, 2);
-    scoreboard.startMatch("Uruguay", "Italy");
+    scoreboard.startNewMatch("Uruguay", "Italy");
     scoreboard.updateScore("Uruguay", "Italy", 6, 6);
-    scoreboard.startMatch("Argentina", "Australia");
+    scoreboard.startNewMatch("Argentina", "Australia");
     scoreboard.updateScore("Argentina", "Australia", 3, 1);
 
     const expectedSummary = [
