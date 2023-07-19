@@ -1,45 +1,52 @@
-export class Match {
-    private homeTeam: string;
-    private awayTeam: string;
-    private homeScore: number;
-    private awayScore: number;
+export type TeamScore = {
+    name: string;
+    score: number;
+  };
+  
+  export class Match {
+    private home: TeamScore;
+    private away: TeamScore;
     private order: number;
   
     constructor(homeTeam: string, awayTeam: string, order: number) {
-      this.homeTeam = homeTeam;
-      this.awayTeam = awayTeam;
-      this.homeScore = 0;
-      this.awayScore = 0;
+      this.home = { name: homeTeam, score: 0 };
+      this.away = { name: awayTeam, score: 0 };
       this.order = order;
     }
   
     public getHomeTeam(): string {
-      return this.homeTeam;
+      return this.home.name;
     }
   
     public getAwayTeam(): string {
-      return this.awayTeam;
+      return this.away.name;
     }
   
     public getHomeScore(): number {
-      return this.homeScore;
+      return this.home.score;
     }
   
     public getAwayScore(): number {
-      return this.awayScore;
+      return this.away.score;
     }
-  
+
     public updateScore(homeScore: number, awayScore: number): void {
-      this.homeScore = homeScore;
-      this.awayScore = awayScore;
+        if (typeof homeScore === 'number' && typeof awayScore === 'number' && homeScore >= 0 && awayScore >= 0) {
+          this.home.score = homeScore;
+          this.away.score = awayScore;
+        } else {
+            this.home.score = 0;
+            this.away.score = 0;  
+          console.log('Invalid score update. Scores must be non-negative numbers.');
+        }
+      }
+    
+      public getOrder(): number {
+        return this.order;
+      }
+    
+      public getSummary(): string {
+        return `${this.home.name} ${this.home.score} - ${this.away.score} ${this.away.name}`;
+      }
     }
-  
-    public getOrder(): number {
-      return this.order;
-    }
-  
-    public getSummary(): string {
-      return `${this.homeTeam} ${this.homeScore} - ${this.awayScore} ${this.awayTeam}`;
-    }
-  }
   
