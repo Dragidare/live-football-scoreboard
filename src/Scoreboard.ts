@@ -61,4 +61,4 @@ export class Scoreboard {
         match.getHomeTeam() === homeTeam && match.getAwayTeam() === awayTeam
     );
   }
-}
+} 

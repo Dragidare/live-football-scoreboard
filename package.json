@@ -4,7 +4,8 @@
   "description": "Live Football World Cup Scoreboard Library",
   "main": "index.js",
   "scripts": {
-    "test": "jest"
+    "test": "jest",
+    "build": "tsc"
   },
   "repository": {
     "type": "git",
